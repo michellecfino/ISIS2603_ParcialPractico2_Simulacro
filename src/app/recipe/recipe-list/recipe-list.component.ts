@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../Recipe';
 import { recipeData } from '../recipeData';
-
+import { RecipeServiceService } from '../recipe-service.service';
+import { RecipeDto } from './recipe-dto';
+import { RecipeDetailDto } from './recipe-detail-dto';
 @Component({
   selector: 'app-recipe-list',
   standalone: false,
@@ -9,17 +11,19 @@ import { recipeData } from '../recipeData';
   styleUrl: './recipe-list.component.css',
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [];
+  recipes: RecipeDto[] = [];
   selected: Boolean = false;
-  selectedRecipe: Recipe | null = null;
+  selectedRecipe: RecipeDetailDto  | null = null;
 
-  constructor() {}
+  constructor(private recipeService: RecipeServiceService) {}
 
   ngOnInit() {
-    this.recipes = recipeData;
+    this.recipeService.getRecipes().subscribe((recipes) => {
+      this.recipes = recipes;
+    });
   }
 
-  onSelect(recipe: Recipe) {
+  onSelect(recipe: RecipeDetailDto) {
     this.selectedRecipe = recipe;
     this.selected = true;
   }

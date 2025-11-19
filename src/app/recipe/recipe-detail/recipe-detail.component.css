@@ -1,3 +1,20 @@
-img.recipe-detail-img {
-  max-width: 500px;
+.recipe-detail-background {
+  background-color: #ffe6ee; /* rosadito */
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+.detail-card {
+  background: white;
+  width: 85%;
+  max-width: 1000px;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.badge-tag {
+  background-color: #ffb6c8;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
 }
